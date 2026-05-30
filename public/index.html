@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Invoice Generator</h1>
+      <p>Create and manage invoices easily</p>
+    </header>
+
+    <main>
+      <!-- Create Invoice Form -->
+      <section class="form-section">
+        <h2>Create New Invoice</h2>
+        <form id="invoiceForm">
+          <!-- Invoice Number -->
+          <div class="form-group">
+            <label for="invoiceNumber">Invoice Number:</label>
+            <input type="text" id="invoiceNumber" name="invoiceNumber" required placeholder="INV-001">
+          </div>
+
+          <!-- Client Details -->
+          <fieldset>
+            <legend>Client Details</legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="clientName">Client Name:</label>
+                <input type="text" id="clientName" name="clientName" required>
+              </div>
+              <div class="form-group">
+                <label for="clientEmail">Email:</label>
+                <input type="email" id="clientEmail" name="clientEmail">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="clientPhone">Phone:</label>
+                <input type="tel" id="clientPhone" name="clientPhone">
+              </div>
+              <div class="form-group">
+                <label for="clientAddress">Address:</label>
+                <input type="text" id="clientAddress" name="clientAddress">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Items Section -->
+          <fieldset>
+            <legend>Invoice Items</legend>
+            <div id="itemsContainer">
+              <div class="item-row">
+                <input type="text" class="item-description" placeholder="Description" required>
+                <input type="number" class="item-quantity" placeholder="Qty" value="1" min="1" required>
+                <input type="number" class="item-rate" placeholder="Rate" min="0" step="0.01" required>
+                <span class="item-amount">0.00</span>
+                <button type="button" class="btn-remove-item">Remove</button>
+              </div>
+            </div>
+            <button type="button" id="addItemBtn" class="btn-secondary">+ Add Item</button>
+          </fieldset>
+
+          <!-- Tax and Due Date -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tax">Tax (%):</label>
+              <input type="number" id="tax" name="tax" min="0" step="0.01" value="0">
+            </div>
+            <div class="form-group">
+              <label for="dueDate">Due Date:</label>
+              <input type="date" id="dueDate" name="dueDate">
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div class="form-group">
+            <label for="notes">Notes:</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Additional notes..."></textarea>
+          </div>
+
+          <!-- Totals Display -->
+          <div class="totals">
+            <p><strong>Subtotal:</strong> <span id="subtotal">0.00</span></p>
+            <p><strong>Tax:</strong> <span id="taxAmount">0.00</span></p>
+            <p class="total"><strong>Total:</strong> <span id="total">0.00</span></p>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary">Create Invoice</button>
+        </form>
+      </section>
+
+      <!-- Invoices List -->
+      <section class="invoices-section">
+        <h2>Saved Invoices</h2>
+        <div id="invoicesList" class="invoices-grid">
+          <p class="no-invoices">No invoices yet. Create one above!</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Invoice Detail Modal -->
+  <div id="detailModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="invoiceDetail"></div>
+      <div class="modal-buttons">
+        <button id="downloadPdfBtn" class="btn-primary">Download PDF</button>
+        <button id="deleteInvoiceBtn" class="btn-danger">Delete Invoice</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
