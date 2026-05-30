@@ -260,3 +260,16 @@ Feel free to fork, modify, and improve this project. Submit pull requests with e
 ---
 
 **Created with ❤️ for freelancers and small businesses**
+
+## 🔗 Live Demo
+[View Live App](https://invoice-generator-pst0.onrender.com)
+
+## 💻 GitHub
+[View Repository](https://github.com/oni-oluwapelumi/invoice-generator)
+
+## 🛠️ Built With
+- Node.js & Express.js
+- MongoDB Atlas
+- REST API
+- PDFKit
+- HTML/CSS/JavaScript
